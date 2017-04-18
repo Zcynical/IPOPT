@@ -160,14 +160,16 @@
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
-      <AdditionalLibraryDirectories>$(INTEL_COMPILER_PATH)\lib\intel64;$(INTEL_COMPILER_PATH)\mkl\em64t\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(INTEL_COMPILER_PATH)\lib\intel64;$(INTEL_COMPILER_PATH)\mkl\em64t\lib;$(SolutionDir)$(Platform)\$(Configuration)\;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2017.2.187\windows\compiler\lib\intel64_win;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>CoinBlas.lib;CoinLapack.lib;CoinMetis.lib;CoinMumpsC.lib;CoinMumpsF90.lib;IpOptFor.lib;IpOptFSS.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>..\IpOpt\ExportBinaries.bat $(Platform) $(Configuration) "$(INTEL_COMPILER_PATH)"</Command>
